@@ -372,6 +372,61 @@ body {
 
 <div class="container">
 
+  <div style="background:var(--fog);border:1px solid var(--border);border-radius:6px;padding:24px 28px;margin-bottom:32px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Stay Informed</span>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contact-form-timeline">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">First Name *</label>
+          <input type="text" name="first-name" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="First name">
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Last Name *</label>
+          <input type="text" name="last-name" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="Last name">
+        </div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Email Address *</label>
+        <input type="email" name="email" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="your@email.com">
+      </div>
+      <div style="margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:4px;padding:12px 14px;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
+          <input type="checkbox" name="voted-yes-pfas" value="yes" style="margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--forest);">
+          <span style="font-size:13px;color:var(--mid);line-height:1.5;">I voted <strong style="color:var(--dark);">YES</strong> on Prop 3 based on the Board's promise that the turf would be free of PFAS ("zero PFAS")</span>
+        </label>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Comments (optional)</label>
+        <textarea name="comments" rows="2" style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;resize:vertical;" placeholder="Any additional thoughts..."></textarea>
+      </div>
+      <button type="submit" style="background:var(--forest);color:white;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 24px;border:none;border-radius:4px;cursor:pointer;">Submit →</button>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5;">Your information will only be used to keep you informed. It will not be shared with third parties.</p>
+    </form>
+    <div id="form-success-timeline" style="display:none;background:#f0fdf4;border:1px solid #a7d7bc;border-radius:6px;padding:16px 20px;margin-top:10px;text-align:center;">
+      <p style="color:#166534;font-size:14px;font-weight:600;margin:0;">✓ Thank you! We'll keep you informed.</p>
+    </div>
+    <script>
+      document.getElementById('contact-form-timeline').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = e.target;
+        fetch('/timeline', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).then(function() {
+          form.style.display = 'none';
+          document.getElementById('form-success-timeline').style.display = 'block';
+        }).catch(function() { alert('Something went wrong. Please try again.'); });
+      });
+    </script>
+  </div>
+
   <div class="intro">
     <p>The District's PFAS commitment went through several distinct stages between May 2025 and April 2026. Each stage either strengthened or weakened the protection voters were promised — and the gap between what was promised and what was delivered is at the heart of the community's concern.</p>
     <p>Sources: community meeting recordings, board memos, the RFP bid document, and the Gradient testing report.</p>
@@ -593,6 +648,7 @@ body {
           <div class="tl-quote red">2. The "intentionally added" PFAS standard applies — based on a non-binding DEC stakeholder footnote from June 2025</div>
           <div class="tl-quote red">3. Even if PFAS are present, the Board had authority to waive the noncompliance</div>
           <div class="tl-body">Argument 3 is a significant concession — by arguing the Board could waive noncompliance, the District implicitly acknowledges there may be noncompliance to waive.</div>
+          <a href="https://drive.google.com/file/d/11H1B7dkVKjzn6X8A3oW-uAFXUxKUqDsq/view?usp=sharing" target="_blank" class="tl-link">Read the District's response →</a>
         </div>
       </div>
     </div>
@@ -607,6 +663,7 @@ body {
           <div class="tl-body">In his sworn affidavit, Board President Dal Piaz argues that the Gradient test results do not establish that the FieldTurf product actually contains PFAS — a claim that directly contradicts Gradient's own report, which found PFOA in every sample and PFOS at 590 ppt.</div>
           <div class="tl-quote red">"The Gradient Memorandum concludes that the test results of the FieldTurf samples are consistent with no PFAS being used in the manufacture of the turf." — Burns Affirmation summarizing Dal Piaz's position</div>
           <div class="tl-body">Dal Piaz's entire defense relies on the June 2025 DEC stakeholder footnote suggesting "intentionally added" PFAS as the enforcement standard. That footnote has no legal force and was not adopted in the DEC's December 2025 enforcement discretion letter. Critically, it also does not appear in the RFP itself — the standard the Board issued to vendors was "no PFAS for any purpose."</div>
+          <a href="https://drive.google.com/file/d/1n4gzXOMBrOH1aJwWAuKwwDGBPFvaMFOd/view?usp=sharing" target="_blank" class="tl-link">Read the Dal Piaz affidavit →</a>
         </div>
       </div>
       <div class="tl-center"><div class="tl-dot red"></div></div>
