@@ -372,60 +372,11 @@ body {
 
 <div class="container">
 
-  <div style="background:var(--fog);border:1px solid var(--border);border-radius:6px;padding:24px 28px;margin-bottom:32px;">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-      <div style="flex:1;height:1px;background:var(--border);"></div>
-      <span style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Stay Informed</span>
-      <div style="flex:1;height:1px;background:var(--border);"></div>
-    </div>
-    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contact-form-timeline">
-      <input type="hidden" name="form-name" value="contact">
-      <p style="display:none;"><input name="bot-field"></p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">First Name *</label>
-          <input type="text" name="first-name" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="First name">
-        </div>
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Last Name *</label>
-          <input type="text" name="last-name" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="Last name">
-        </div>
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Email Address *</label>
-        <input type="email" name="email" required style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;" placeholder="your@email.com">
-      </div>
-      <div style="margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:4px;padding:12px 14px;">
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
-          <input type="checkbox" name="voted-yes-pfas" value="yes" style="margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--forest);">
-          <span style="font-size:13px;color:var(--mid);line-height:1.5;">I voted <strong style="color:var(--dark);">YES</strong> on Prop 3 based on the Board's promise that the turf would be free of PFAS ("zero PFAS")</span>
-        </label>
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Comments (optional)</label>
-        <textarea name="comments" rows="2" style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:4px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;resize:vertical;" placeholder="Any additional thoughts..."></textarea>
-      </div>
-      <button type="submit" style="background:var(--forest);color:white;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:11px 24px;border:none;border-radius:4px;cursor:pointer;">Submit →</button>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5;">Your information will only be used to keep you informed. It will not be shared with third parties.</p>
-    </form>
-    <div id="form-success-timeline" style="display:none;background:#f0fdf4;border:1px solid #a7d7bc;border-radius:6px;padding:16px 20px;margin-top:10px;text-align:center;">
-      <p style="color:#166534;font-size:14px;font-weight:600;margin:0;">✓ Thank you! We'll keep you informed.</p>
-    </div>
-    <script>
-      document.getElementById('contact-form-timeline').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var form = e.target;
-        fetch(window.location.pathname, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
-        }).then(function() {
-          form.style.display = 'none';
-          document.getElementById('form-success-timeline').style.display = 'block';
-        }).catch(function() { alert('Something went wrong. Please try again.'); });
-      });
-    </script>
-  </div>
+  <div style="background:var(--fog);border:1px solid var(--border);border-radius:6px;padding:24px 28px;margin-bottom:32px;text-align:center;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Hastings Alliance for Safe Fields (HASF)</p>
+    <p style="font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:16px;">Join our community effort to protect the health of our children and our environment. No dues or obligations.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMtUqF9EoOe4aYowDHoabKbkg82KcNaQvWPbkNXupKjG3-6Q/viewform" target="_blank" style="display:inline-block;background:var(--forest);color:white;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:12px 28px;border-radius:4px;text-decoration:none;">Join HASF →</a>
+  </div></div>
 
   <div class="intro">
     <p>The District's PFAS commitment went through several distinct stages between May 2025 and April 2026. Each stage either strengthened or weakened the protection voters were promised — and the gap between what was promised and what was delivered is at the heart of the community's concern.</p>
@@ -512,6 +463,27 @@ body {
       </div>
       <div class="tl-center"><div class="tl-dot green"></div></div>
       <div class="tl-empty"></div>
+    </div>
+
+    <!-- OCT 25 COMMUNITY FORUM -->
+    <div class="tl-item right">
+      <div class="tl-empty"></div>
+      <div class="tl-center"><div class="tl-dot green"></div></div>
+      <div class="tl-content">
+        <div class="tl-card green">
+          <div class="tl-tag green">✓ Promise Reaffirmed</div>
+          <div class="tl-date">October 25, 2025</div>
+          <div class="tl-title">Community Forum: "PFAS-Free" Commitment Repeated</div>
+          <div class="tl-body">At a public Community Forum, the District's technical partners and Board President Dal Piaz repeatedly reaffirm the PFAS-free commitment:</div>
+          <div class="tl-quote green">"The product needs to be recyclable, it needs to be PFAS-free. The community has spoken and that's the items that we are listing as a prerequisite." — Matt Milnamow, LA Group</div>
+          <div class="tl-quote green">"The promises that we made as part of the pre-referendum phase are really taken into consideration as part of the design phase." — Bob Kernan, LA Group</div>
+          <div class="tl-quote green">"People voted on those specs so that the RFP would contain those specs and the winning bidder has to meet them." — Community member Jim Lynch</div>
+          <div class="tl-body">When community member Aarthi Muthukrishnan asks <em>"Is there really a PFAS-free turf? And if you don't find a PFAS-free turf what are you going to do?"</em> — Dal Piaz responds:</div>
+          <div class="tl-quote amber">"New York State has certified all of these products as PFAS-free. They wouldn't be able to even participate in the bidding process."</div>
+          <div class="tl-body">This claim is false. New York State has no certification process for PFAS-free turf. When community member Louise later asks <em>"We were promised fields that had no PFAS… Is the District accountable to that promise?"</em> — Dal Piaz repeats: <em>"New York State has mandated that all turf has to be PFAS-free."</em></div>
+          <a href="https://sportsengineplay.com/Local-Live/Hastings-High-School/Hastings-High-School-Boys-Varsity-Other/game/Community-Forum-2025-10-27?video_id=69000bf19937806476e4bdcb" target="_blank" class="tl-link">Watch the Community Forum video (starts at 20:00) →</a>
+        </div>
+      </div>
     </div>
 
     <!-- 6 -->
